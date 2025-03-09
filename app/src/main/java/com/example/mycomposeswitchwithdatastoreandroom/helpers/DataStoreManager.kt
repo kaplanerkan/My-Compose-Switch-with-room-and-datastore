@@ -28,4 +28,12 @@ class DataStoreManager @Inject constructor(@ApplicationContext private val conte
             settings[booleanPreferencesKey(SWITCH_KEY_PREFIX + id)] ?: false
         }
     }
+
+
+    suspend fun saveIntState(id: Int, state: Boolean) {
+        context.dataStore.edit { settings ->
+            settings[booleanPreferencesKey(SWITCH_KEY_PREFIX + id)] = state
+        }
+    }
+
 }
